@@ -15,6 +15,3 @@ class Workout(Activity):
 
     def get_json(self):
         return super().get_json()[self.uuid]#.append(self.exercises).append(self.muscles_worked)
-
-t = Workout(100, ["Back", "Biceps"])
-print(t.get_json())
