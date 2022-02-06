@@ -1,17 +1,15 @@
-import uuid
+from dataclasses import dataclass
 
-from .activity import Activity 
+from tbft.serialization.serializable import Serializable
 
-class Workout(Activity): 
-    def __init__(self, name="Workout", cals_burned=0, muscles_worked: "list[str]"=[""]): 
-        self.uuid = uuid.uuid4()
-        self.name = name
-        self.cals = cals_burned
-        self.exercises = [""]
-        self.muscles_worked = muscles_worked
+@dataclass
+class Workout(Serializable): 
+    name: str
+    date: str
+    __slots__ = ["name", "date"]
+    def as_json_ready(self):
+        return super().as_json_ready()
 
-    def get_uuid(self): 
-        return self.uuid
-
-    def get_json(self):
-        return super().get_json()[self.uuid]#.append(self.exercises).append(self.muscles_worked)
+    @classmethod
+    def from_json(cls, json):
+        return super().from_json(json)

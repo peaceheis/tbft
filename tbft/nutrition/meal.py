@@ -31,7 +31,7 @@ class Meal():
         self.cals = self.calculate_cals()
 
     def get_uuid(self): 
-        return self.uuid #no getter, that's definitely not something to modify. 
+        return self.uuid #no setter, that's definitely not something to modify. 
 
     def get_cals(self): 
         return self.cals
